@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Giosuè Gambardella · Cosmology</title>
+  <meta name="description" content="Giosuè Gambardella — PhD candidate in cosmology at ICE-CSIC, Barcelona. Galaxy clustering, perturbation theory and covariances for Euclid and DESI.">
+  <meta property="og:title" content="Giosuè Gambardella · Cosmology">
+  <meta property="og:description" content="Galaxy clustering, perturbation theory and covariances for Euclid and DESI.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0a0d13">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0d13'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23ff9d5c' stroke-width='1.6' stroke-dasharray='2.5 2.5'/%3E%3Ccircle cx='16' cy='16' r='2.6' fill='%237fd4ff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<!-- Background effect: data-effect="web" (soft cosmic web over the whole page that
+     condenses into haloes and galaxies around the cursor) or data-effect="bao"
+     (galaxy field + BAO shell probe in the header only). -->
+<body data-effect="web">
+<canvas id="web" aria-hidden="true"></canvas>
+<div class="hud" id="hud" aria-hidden="true"></div>
+
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="topbar">
+  <a class="brand" href="#top"><span class="brand-mark"></span>giosuè gambardella</a>
+  <nav>
+    <a href="#about"><i>01</i>About</a>
+    <a href="#research"><i>02</i>Research</a>
+    <a href="#publications"><i>03</i>Papers</a>
+    <a href="#talks"><i>04</i>Talks</a>
+    <a href="#path"><i>05</i>Path</a>
+    <a href="#contact"><i>06</i>Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow"><span class="pulse"></span>PhD candidate · Cosmology · ICE-CSIC Barcelona</p>
+        <h1>Giosuè<br>Gambardella</h1>
+        <p class="lede">
+          I study how galaxies trace the <em>large-scale structure</em> of the Universe,
+          and build the models and covariances that turn <strong>Euclid</strong> and
+          <strong>DESI</strong> clustering measurements into cosmology.
+        </p>
+        <ul class="links">
+          <li><a class="btn primary" href="mailto:ggambardella@ice.csic.es">ggambardella@ice.csic.es</a></li>
+          <li><a class="btn" href="https://inspirehep.net/authors/2720210">INSPIRE ↗</a></li>
+          <li><a class="btn" href="https://arxiv.org/search/?searchtype=author&amp;query=Gambardella%2C+Giosu%C3%A8">arXiv ↗</a></li>
+          <li><a class="btn" href="https://ui.adsabs.harvard.edu/search/q=author%3A%22Gambardella%2C%20Giosu%C3%A8%22&amp;sort=date%20desc">ADS ↗</a></li>
+          <li><a class="btn" href="https://orcid.org/0009-0001-1281-1746">ORCID ↗</a></li>
+          <!-- <li><a class="btn" href="https://github.com/YOUR-USERNAME">GitHub ↗</a></li> -->
+          <li><a class="btn" href="cv.pdf">CV ↓</a></li>
+        </ul>
+      </div>
+
+      <figure class="portrait-card">
+        <div class="portrait">
+          <!-- Put your photo in this folder as photo.jpg (square, ~800×800 px). -->
+          <img src="photo.jpg" alt="Portrait of Giosuè Gambardella" onerror="this.parentElement.classList.add('no-photo'); this.remove();">
+          <span class="initials" aria-hidden="true">GG</span>
+          <span class="orbit"></span>
+        </div>
+      </figure>
+    </div>
+
+    <div class="readout" id="readout" aria-hidden="true"></div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="stats" aria-label="At a glance">
+    <div><b data-count="11">11</b><span>papers</span></div>
+    <div><b data-count="2">2</b><span>collaborations<br>Euclid · DESI</span></div>
+    <div><b data-count="10">10</b><span>talks &amp;<br>posters</span></div>
+    <div><b data-count="3">3</b><span>countries<br>IT · ES · CA</span></div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="block" id="about">
+    <header class="sec-head"><span class="num">§01</span><h2>About</h2><span class="rule"></span></header>
+    <div class="about-grid">
+      <div class="prose">
+        <p class="big">
+          Final-year PhD student at the Institute of Space Sciences (ICE-CSIC) in Barcelona,
+          working with Martín Crocce on <em>Large Scale Structure and Dark Energy</em>.
+        </p>
+        <p>
+          My work sits between theory and data: developing and validating the tools used to
+          analyse galaxy clustering, so that we can trust what the next generation of
+          spectroscopic surveys tells us about dark energy, gravity and neutrinos.
+          I'm a member of the Euclid Consortium (BAO and Full-Shape key projects) and the
+          DESI Collaboration (galaxy and quasar clustering).
+        </p>
+        <p>
+          I did my Bachelor's and Master's in physics at the University of Trieste, with a
+          thesis on the validity range of perturbative models under Emiliano Sefusatti and
+          Pierluigi Monaco. In 2025 I was a visiting student at the Waterloo Centre for
+          Astrophysics with Will Percival and Marco Bonici.
+        </p>
+      </div>
+
+      <aside class="now">
+        <p class="now-head"><span class="pulse"></span>Currently</p>
+        <ul>
+          <li><span class="tag c1">Euclid</span>Joint BAO + full-shape covariances for DR1</li>
+          <li><span class="tag c2">DESI</span>VDG modelling of the power spectrum &amp; bispectrum</li>
+          <li><span class="tag c3">Thesis</span>Writing up, final year</li>
+          <li><span class="tag c4">Next</span>Looking for postdoc positions from 2027</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ================= RESEARCH ================= -->
+  <section class="block" id="research">
+    <header class="sec-head"><span class="num">§02</span><h2>Research</h2><span class="rule"></span></header>
+
+    <ul class="tags">
+      <li>galaxy clustering</li><li>full-shape analyses</li><li>BAO</li>
+      <li>perturbation theory / EFTofLSS</li><li>power spectrum</li><li>bispectrum</li>
+      <li>covariance matrices</li><li>simulations &amp; HOD mocks</li>
+      <li>Bayesian inference</li><li>dark energy</li><li>neutrino mass</li>
+    </ul>
+
+
+    <div class="projects">
+      <article class="project">
+        <div class="p-top"><span class="kicker">Euclid · DESI</span><span class="p-id">P-01</span></div>
+        <h3>Joint covariances for BAO + full shape</h3>
+        <p>
+          BAO and full-shape analyses use the same galaxies, so their measurements are
+          correlated. I model the cross-covariance between the post-reconstruction BAO signal
+          and the pre-reconstruction power spectrum so the two can be combined consistently,
+          and validate it against large suites of simulations.
+        </p>
+        <p class="p-foot"><code>Jcov</code> · author · Euclid DR1</p>
+      </article>
+
+      <article class="project">
+        <div class="p-top"><span class="kicker">DESI</span><span class="p-id">P-02</span></div>
+        <h3>Power spectrum &amp; bispectrum modelling</h3>
+        <p>
+          Perturbative models for the redshift-space galaxy power spectrum and bispectrum,
+          using the VDG (velocity-difference generator) treatment of redshift-space
+          distortions, and testing how they perform on DESI-like data.
+        </p>
+        <p class="p-foot">talks · CERN 2026 · DESI Durham 2026</p>
+      </article>
+
+      <article class="project">
+        <div class="p-top"><span class="kicker">Theory validation</span><span class="p-id">P-03</span></div>
+        <h3>How far can perturbation theory go?</h3>
+        <p>
+          One-loop models are only trustworthy up to some maximum wavenumber, and that limit
+          depends on survey volume. Using thousands of mocks we measured the <i>k</i>-reach of
+          these models, with goodness of fit, parameter bias and internal consistency as
+          diagnostics, and its scatter between realisations.
+        </p>
+        <p class="p-foot"><a href="https://arxiv.org/abs/2311.04608">PRD 110, 083502 ↗</a></p>
+      </article>
+
+      <article class="project">
+        <div class="p-top"><span class="kicker">Tools</span><span class="p-id">P-04</span></div>
+        <h3>Emulators, units &amp; mocks</h3>
+        <p>
+          Contributing to COMET, an emulator for perturbation-theory predictions, including
+          its extension to massive neutrinos via evolution mapping. Reducing prior-volume
+          effects by working in Mpc rather than <i>h</i><sup>−1</sup>Mpc. Co-author of
+          SciPIC-lite, an HOD pipeline for building mock catalogues.
+        </p>
+        <p class="p-foot"><a href="https://arxiv.org/abs/2503.16160">PRD 112, 023520 ↗</a></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= PUBLICATIONS ================= -->
+  <section class="block" id="publications">
+    <header class="sec-head"><span class="num">§03</span><h2>Publications</h2><span class="rule"></span></header>
+
+    <div class="pub-bar">
+      <div class="filters" role="tablist">
+        <button class="on" data-f="all">All <i>11</i></button>
+        <button data-f="key">Key papers <i>4</i></button>
+        <button data-f="euclid">Euclid <i>4</i></button>
+        <button data-f="desi">DESI <i>3</i></button>
+      </div>
+      <p class="pub-src">Always up to date on <a href="https://inspirehep.net/authors/2720210">INSPIRE ↗</a></p>
+    </div>
+
+    <ol class="pubs">
+      <li data-k="key">
+        <span class="yr">2026</span>
+        <div>
+          <p class="title">SciPIC-lite: A flexible Halo Occupation Distribution pipeline aimed at clustering observables</p>
+          <p class="authors">G. Parimbelli, M. Crocce, <b>G. Gambardella</b>, A. Eggemeier, P. Fosalba, E. J. Gonzalez, et al.</p>
+          <p class="meta"><span class="badge">submitted</span><a href="https://arxiv.org/abs/2611.26785">arXiv:2611.26785</a></p>
+        </div>
+      </li>
+      <li data-k="key">
+        <span class="yr">2026</span>
+        <div>
+          <p class="title">Mitigating prior-volume effects in galaxy clustering by adopting Mpc over Mpc/<i>h</i> units</p>
+          <p class="authors">A. Pezzotta, A. Pérez-Fernández, <b>G. Gambardella</b>, A. G. Sánchez, A. Eggemeier, M. Crocce, B. Camacho-Quevedo</p>
+          <p class="meta"><span class="badge">submitted</span><a href="https://arxiv.org/abs/2610.08751">arXiv:2610.08751</a></p>
+        </div>
+      </li>
+      <li data-k="desi">
+        <span class="yr">2026</span>
+        <div>
+          <p class="title">Validation of the DESI DR2 Lyα forest full-shape analysis</p>
+          <p class="authors">DESI · 103 authors incl. <b>G. Gambardella</b></p>
+          <p class="meta"><span class="badge">submitted</span><a href="https://arxiv.org/abs/2607.27411">arXiv:2607.27411</a></p>
+        </div>
+      </li>
+      <li data-k="desi">
+        <span class="yr">2026</span>
+        <div>
+          <p class="title">CoLoRe-2LPT: Lyman-α mock catalogues for the validation of DESI cosmological analyses</p>
+          <p class="authors">DESI · 93 authors incl. <b>G. Gambardella</b></p>
+          <p class="meta"><span class="badge">submitted</span><a href="https://arxiv.org/abs/2607.27412">arXiv:2607.27412</a></p>
+        </div>
+      </li>
+      <li data-k="desi">
+        <span class="yr">2026</span>
+        <div>
+          <p class="title">DESI DR2 Results IV: Alcock–Paczyński measurements from the Lyman-α forest and cosmological constraints</p>
+          <p class="authors">DESI Collaboration</p>
+          <p class="meta"><span class="badge">submitted</span><a href="https://arxiv.org/abs/2607.27410">arXiv:2607.27410</a></p>
+        </div>
+      </li>
+      <li data-k="euclid">
+        <span class="yr">2026</span>
+        <div>
+          <p class="title">Euclid preparation CXII. Baryon acoustic oscillations extraction techniques: comparison and optimisation</p>
+          <p class="authors">Euclid Collaboration</p>
+          <p class="meta"><span class="badge j">A&amp;A 715, A98</span><a href="https://arxiv.org/abs/2605.03446">arXiv:2605.03446</a><a href="https://doi.org/10.1051/0004-6361/202660781">DOI</a></p>
+        </div>
+      </li>
+      <li data-k="euclid">
+        <span class="yr">2026</span>
+        <div>
+          <p class="title">Euclid preparation. Galaxy power spectrum and bispectrum modelling</p>
+          <p class="authors">Euclid Collaboration</p>
+          <p class="meta"><span class="badge">submitted</span><a href="https://arxiv.org/abs/2603.27966">arXiv:2603.27966</a></p>
+        </div>
+      </li>
+      <li data-k="euclid">
+        <span class="yr">2026</span>
+        <div>
+          <p class="title">Euclid preparation CVIII. Galaxy power spectrum modelling in redshift space</p>
+          <p class="authors">Euclid Collaboration</p>
+          <p class="meta"><span class="badge j">A&amp;A 713, A259</span><a href="https://arxiv.org/abs/2601.20826">arXiv:2601.20826</a><a href="https://doi.org/10.1051/0004-6361/202659593">DOI</a></p>
+        </div>
+      </li>
+      <li data-k="euclid">
+        <span class="yr">2026</span>
+        <div>
+          <p class="title">Euclid preparation CI. Galaxy 2-point correlation function modelling in redshift space</p>
+          <p class="authors">Euclid Collaboration</p>
+          <p class="meta"><span class="badge j">A&amp;A 713, A212</span><a href="https://arxiv.org/abs/2601.04780">arXiv:2601.04780</a><a href="https://doi.org/10.1051/0004-6361/202658887">DOI</a></p>
+        </div>
+      </li>
+      <li data-k="key">
+        <span class="yr">2025</span>
+        <div>
+          <p class="title">Extending evolution mapping to massive neutrinos with COMET</p>
+          <p class="authors">A. Pezzotta, A. Eggemeier, <b>G. Gambardella</b>, L. Finkbeiner, A. G. Sánchez, B. Camacho Quevedo, M. Crocce, N. Lee, G. Parimbelli, R. Scoccimarro</p>
+          <p class="meta"><span class="badge j">Phys. Rev. D 112, 023520</span><a href="https://arxiv.org/abs/2503.16160">arXiv:2503.16160</a><a href="https://doi.org/10.1103/vy3h-p92n">DOI</a></p>
+        </div>
+      </li>
+      <li data-k="key" class="first">
+        <span class="yr">2024</span>
+        <div>
+          <p class="title">On the range of validity of perturbative models for galaxy clustering and its uncertainty</p>
+          <p class="authors"><b>G. Gambardella</b>, M. Biagetti, C. Moretti, E. Sefusatti</p>
+          <p class="meta"><span class="badge lead">first author</span><span class="badge j">Phys. Rev. D 110, 083502</span><a href="https://arxiv.org/abs/2311.04608">arXiv:2311.04608</a><a href="https://doi.org/10.1103/PhysRevD.110.083502">DOI</a></p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ================= TALKS ================= -->
+  <section class="block" id="talks">
+    <header class="sec-head"><span class="num">§04</span><h2>Talks &amp; meetings</h2><span class="rule"></span></header>
+    <ol class="timeline">
+      <li><span class="when">Sep 2026</span><div><b>VDG modelling for DESI: power spectrum &amp; bispectrum</b><span>New Physics from Galaxy Clustering · CERN, Geneva</span></div><em>contributed</em></li>
+      <li><span class="when">May 2026</span><div><b>Joint covariances for DR1</b><span>Euclid Consortium Meeting · Barcelona · also on the LOC</span></div><em>splinter</em></li>
+      <li><span class="when">Apr 2026</span><div><b>Testing the GC pipeline on HOD mocks</b><span>Euclid Cosmological Simulations SWG · online</span></div><em>short talk</em></li>
+      <li><span class="when">2026</span><div><b>VDG modelling for DESI: power spectrum &amp; bispectrum</b><span>DESI Collaboration Meeting · Durham, UK</span></div><em>contributed</em></li>
+      <li class="hl"><span class="when">2026</span><div><b>Joint covariance: full shape &amp; BAO</b><span>Euclid Galaxy Clustering SWG Meeting · Trieste · + spotlight &amp; splinter talks</span></div><em>plenary</em></li>
+      <li><span class="when">Jul 2025</span><div><b>Hands-on session: spectroscopic galaxy clustering</b><span>Summer School on Observational Cosmology · Barcelona · with A. Eggemeier</span></div><em>co-organiser</em></li>
+      <li><span class="when">2025</span><div><b>Cross covariance: power spectrum and BAO</b><span>Euclid GC SWG Meeting · Garching, Germany</span></div><em>splinter</em></li>
+      <li><span class="when">2024</span><div><b>Spotlight talk</b><span>BCN MAD Meeting · Barcelona</span></div><em>spotlight</em></li>
+      <li><span class="when">2024</span><div><b>On the range of validity of perturbative models for galaxy clustering</b><span>ICTP Summer School on Cosmology · Trieste</span></div><em>poster</em></li>
+    </ol>
+  </section>
+
+  <!-- ================= PATH ================= -->
+  <section class="block" id="path">
+    <header class="sec-head"><span class="num">§05</span><h2>Path</h2><span class="rule"></span></header>
+    <div class="path">
+      <div class="path-col">
+        <p class="col-title">Education</p>
+        <div class="step now-step">
+          <span class="dates">2023 → now</span>
+          <h3>PhD, Cosmology &amp; Extragalactic Astrophysics</h3>
+          <p>ICE-CSIC, Barcelona · sup. Martín Crocce</p>
+          <p class="dim">Thesis: Large Scale Structure and Dark Energy</p>
+        </div>
+        <div class="step">
+          <span class="dates">2020 — 2023</span>
+          <h3>MSc Physics · 110/110 cum laude</h3>
+          <p>University of Trieste · sup. E. Sefusatti &amp; P. Monaco</p>
+          <p class="dim">On the range of validity of perturbative methods in galaxy clustering</p>
+        </div>
+        <div class="step">
+          <span class="dates">2017 — 2020</span>
+          <h3>BSc Physics · 110/110</h3>
+          <p>University of Trieste · sup. S. Ansoldi</p>
+          <p class="dim">Propagation of photons around a black hole</p>
+        </div>
+      </div>
+      <div class="path-col">
+        <p class="col-title">Experience</p>
+        <div class="step">
+          <span class="dates">2025</span>
+          <h3>Visiting graduate student</h3>
+          <p>Waterloo Centre for Astrophysics, Canada · W. Percival &amp; M. Bonici</p>
+          <p class="dim">Data-processing software for Euclid emission-line galaxies, with applications to DESI</p>
+        </div>
+        <div class="step">
+          <span class="dates">2023 → now</span>
+          <h3>Euclid Consortium &amp; DESI Collaboration</h3>
+          <p>Galaxy clustering working groups · BAO &amp; Full-Shape key projects</p>
+        </div>
+        <div class="step">
+          <span class="dates">2023</span>
+          <h3>High-school teacher, maths &amp; physics</h3>
+          <p>Istituto Superiore G. Marconi, Conegliano</p>
+        </div>
+        <div class="step">
+          <span class="dates">2020</span>
+          <h3>Research intern · Elettra Sincrotrone</h3>
+          <p>Time-resolved Kerr spectroscopy at the FERMI free-electron laser</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbox">
+      <p class="col-title">Toolbox</p>
+      <div class="tool-grid">
+        <div><span>codes</span><p><b>Jcov</b> (author) · <a href="https://comet-emu.readthedocs.io/">COMET</a> (contributor) · PBJ · CAMB</p></div>
+        <div><span>languages</span><p>Python · JAX · Fortran · LaTeX · Git · HPC / SLURM</p></div>
+        <div><span>inference</span><p>nautilus · MultiNest · emcee · normalising flows</p></div>
+        <div><span>spoken</span><p>Italian (native) · English (fluent) · Spanish (good)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="block contact" id="contact">
+    <header class="sec-head"><span class="num">§06</span><h2>Contact</h2><span class="rule"></span></header>
+    <div class="contact-grid">
+      <div>
+        <p class="big">Happy to talk about clustering, covariances, or postdoc opportunities.</p>
+        <div class="mail-row">
+          <a class="mail" href="mailto:ggambardella@ice.csic.es">ggambardella@ice.csic.es</a>
+          <button class="copy" data-copy="ggambardella@ice.csic.es">copy</button>
+        </div>
+      </div>
+      <div class="addr">
+        <p class="col-title">Address</p>
+        <p>Institute of Space Sciences (ICE-CSIC)<br>Campus UAB, Carrer de Can Magrans s/n<br>08193 Cerdanyola del Vallès, Barcelona</p>
+        <p class="col-title">Profiles</p>
+        <p class="plinks">
+          <a href="https://inspirehep.net/authors/2720210">INSPIRE</a>
+          <a href="https://arxiv.org/search/?searchtype=author&amp;query=Gambardella%2C+Giosu%C3%A8">arXiv</a>
+          <a href="https://ui.adsabs.harvard.edu/search/q=author%3A%22Gambardella%2C%20Giosu%C3%A8%22&amp;sort=date%20desc">ADS</a>
+          <a href="https://orcid.org/0009-0001-1281-1746">ORCID</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© <span id="year">2026</span> Giosuè Gambardella</span>
+  <span class="dim" id="fx-note"></span>
+  <span>Updated Nov 2026</span>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
